@@ -1,9 +1,10 @@
 <h2>Edit Student</h2>
 
-<form action=""{{ route('students.update', $student->id)}}">
-    method="post">
+<form action="{{ route('students.update', $student->id)}}"
+    method="POST">
 
     @csrf
+    @method('PUT')
     <lable for="name">Name :</lable>
     <input type="text" name="name" value="{{ $student->name}}">
     <lable for="email">Email :</lable>
