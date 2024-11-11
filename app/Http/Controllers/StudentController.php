@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Students;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -30,14 +31,14 @@ class StudentController extends Controller
     {
         $request->validate([
                     'name' => 'required',
-                    'email' => 'required[email|unique:students',
+                    'email' => 'required|email|unique:students',
                     'phone' => 'required',
                     
         ]);
 
         Students::create($request->all());
 
-        return redirect()->roter('students.index')-> with ('success', 'Student created successfully.');
+        return redirect()->router('students.index')-> with ('success', 'Student created successfully.');
     }
 
     /**
@@ -63,7 +64,7 @@ class StudentController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:students,email,' . Student->id,
+            'email' => 'required|email|unique:students,email,' . $student->id,
             'phone' => 'required',
         ]);
 

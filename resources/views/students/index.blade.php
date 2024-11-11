@@ -1,5 +1,5 @@
 <h2>Student List</h2>
-<a href="{{route('students.create'_}}" class="">Add New Student</a>
+<a href="{{route('students.create')}}">Add New Student</a>
 
 @if (session('success'))
     <p>{{session ('success')}}</p>
@@ -18,8 +18,8 @@
         <td>{{ $student->email }}</td>
         <td>{{ $student->phone }}</td>
         <td>
-            <a href="{{ rote('students.edit'}, $student->id)}">Edit</a>
-            <form action="{{route('students.destroy', $student-> }}" method="POST">
+            <a href="{{ route('students.edit', $student->id)}}">Edit</a>
+            <form action="{{route('students.destroy', $student->id)}}" method="POST">
             @csrf
             @method('DELETE')
             <button type="submit">Delete</button>
